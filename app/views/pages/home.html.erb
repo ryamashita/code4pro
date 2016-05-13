@@ -1,0 +1,244 @@
+<div class="alert alert-info" style="margin-bottom:40px; ">
+	<button class="close" data-dismiss="alert">&times;</button>
+	お知らせ！<br>
+	登録完了で5,000円分の商品券プレゼント（先着100名様、現在賃貸住宅にお住みで引越し予定の方限定）
+</div>
+
+
+
+<%= form_tag search_path, method: :get do |f| %>
+	<div class="row">
+		<div class="col-md-10">
+			<%= text_field_tag :search, params[:search], placeholder: "住所・駅名で検索", class: "form-control" %>
+		</div>
+		<div class="col-md-2">
+			<%= submit_tag "検索", class: "btn btn-warning" %>
+		</div>
+	</div>
+<% end %>
+
+<div class="top-wrapper">
+	<h1>住まい探しをもっと楽しく</h1>
+</div>
+
+<div class="text-center">
+	<h1>ピックアップ特集</h1>
+	<p>大学合格おめでとうございます！新入学生に送るオススメ物件はこちら！</p>
+</div>
+
+<br>
+
+<div class="row">
+
+	<div class="col-md-4 col-sm-12">
+		<a href="http://localhost:3000/search?utf8=%E2%9C%93&search=meguro">
+			<div class="discovery-card" style="background-image: url('/assets/tokyo_university.jpg')">
+				<div class="va-container">
+					<div class="va-middle text-center">
+						<h1><strong>Tokyo Univ.</strong></h1>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+
+	<div class="col-md-4 col-sm-6">
+		<a href="http://localhost:3000/search?utf8=%E2%9C%93&search=kohoku">
+			<div class="discovery-card" style="background-image: url('/assets/keio_university.jpg')">
+				<div class="va-container">
+					<div class="va-middle text-center">
+						<h1><strong>Keio Univ.</strong></h1>
+					</div>
+				</div>			
+			</div>
+		</a>
+	</div>
+
+	<div class="col-md-4 col-sm-6">
+		<a href="http://localhost:3000/search?utf8=%E2%9C%93&search=suginami">
+			<div class="discovery-card" style="background-image: url('/assets/meiji_university.jpg')">
+				<div class="va-container">
+					<div class="va-middle text-center">
+						<h1><strong>Meiji Univ.</strong></h1>
+					</div>
+				</div>			
+			</div>
+		</a>
+	</div>
+
+</div>
+
+<br>
+
+<hr>
+
+<div class="text-center">
+	<h1>住みたい街ランキング特集（関東編）</h1>
+	<p>恵比寿・吉祥寺・武蔵小杉周辺の人気物件はこちらから</p>
+</div>
+
+<br>
+
+<div class="row">
+
+	<div class="col-md-4 col-sm-12">
+		<a href="http://localhost:3000/search?utf8=%E2%9C%93&search=ebisu">
+			<div class="discovery-card" style="background-image: url('/assets/ebisu.jpg')">
+				<div class="va-container">
+					<div class="va-middle text-center">
+						<h1><strong>恵比寿</strong></h1>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+
+	<div class="col-md-4 col-sm-6">
+		<a href="http://localhost:3000/search?utf8=%E2%9C%93&search=kichijoji">
+			<div class="discovery-card" style="background-image: url('/assets/kichijoji.jpg')">
+				<div class="va-container">
+					<div class="va-middle text-center">
+						<h1><strong>吉祥寺</strong></h1>
+					</div>
+				</div>			
+			</div>
+		</a>
+	</div>
+
+	<div class="col-md-4 col-sm-6">
+		<a href="http://localhost:3000/search?utf8=%E2%9C%93&search=nakahara">
+			<div class="discovery-card" style="background-image: url('/assets/musashikosugi.jpg')">
+				<div class="va-container">
+					<div class="va-middle text-center">
+						<h1><strong>武蔵小杉</strong></h1>
+					</div>
+				</div>			
+			</div>
+		</a>
+	</div>
+
+</div>
+
+<br>
+
+<hr>
+
+<div class="text-center">
+	<h1>住みたい街ランキング特集（大阪編）</h1>
+	<p>千里中央・西宮・梅田周辺の人気物件はこちらから</p>
+</div>
+
+<br>
+
+<div class="row">
+
+	<div class="col-md-4 col-sm-12">
+		<a href="http://localhost:3000/search?utf8=%E2%9C%93&search=senrichuo">
+			<div class="discovery-card" style="background-image: url('/assets/senrichuo.jpg')">
+				<div class="va-container">
+					<div class="va-middle text-center">
+						<h1><strong>千里中央</strong></h1>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+
+	<div class="col-md-4 col-sm-6">
+		<a href="http://localhost:3000/search?utf8=%E2%9C%93&search=nishinomiya">
+			<div class="discovery-card" style="background-image: url('/assets/nishinomiya.jpg')">
+				<div class="va-container">
+					<div class="va-middle text-center">
+						<h1><strong>西宮</strong></h1>
+					</div>
+				</div>			
+			</div>
+		</a>
+	</div>
+
+	<div class="col-md-4 col-sm-6">
+		<a href="http://localhost:3000/search?utf8=%E2%9C%93&search=umeda">
+			<div class="discovery-card" style="background-image: url('/assets/umeda.jpg')">
+				<div class="va-container">
+					<div class="va-middle text-center">
+						<h1><strong>梅田</strong></h1>
+					</div>
+				</div>			
+			</div>
+		</a>
+	</div>
+
+</div>
+
+<br>
+
+<hr>
+
+<div class="text-center">
+	<h1>住みたい街ランキング特集（名古屋編）</h1>
+	<p>覚王山・本山・星ヶ丘周辺の人気物件はこちらから</p>
+</div>
+
+<br>
+
+<div class="row">
+
+	<div class="col-md-4 col-sm-12">
+		<a href="http://localhost:3000/search?utf8=%E2%9C%93&search=kakuozan">
+			<div class="discovery-card" style="background-image: url('/assets/kakuozan.jpg')">
+				<div class="va-container">
+					<div class="va-middle text-center">
+						<h1><strong>覚王山</strong></h1>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+
+	<div class="col-md-4 col-sm-6">
+		<a href="http://localhost:3000/search?utf8=%E2%9C%93&search=motoyama">
+			<div class="discovery-card" style="background-image: url('/assets/motoyama.jpg')">
+				<div class="va-container">
+					<div class="va-middle text-center">
+						<h1><strong>本山</strong></h1>
+					</div>
+				</div>			
+			</div>
+		</a>
+	</div>
+
+	<div class="col-md-4 col-sm-6">
+		<a href="http://localhost:3000/search?utf8=%E2%9C%93&search=hoshigaoka">
+			<div class="discovery-card" style="background-image: url('/assets/hoshigaoka.jpg')">
+				<div class="va-container">
+					<div class="va-middle text-center">
+						<h1><strong>星ヶ丘</strong></h1>
+					</div>
+				</div>			
+			</div>
+		</a>
+	</div>
+
+</div>
+
+<br>
+
+<hr>
+
+<div class="row">
+	<% @rooms.each do |room| %>
+
+		<div class="col-md-4">
+			<div class="panel panel-default">
+				<div class="panel-heading preview">
+					<%= image_tag room.photos[0].image.url(:medium) if room.photos.length > 0 %>
+				</div>
+				<div class="panel-body">
+					<%= image_tag avatar_url(room.user), class: "img-circle avatar-small" %>&nbsp;
+					<%= link_to room.user.fullname, room %>
+				</div>
+			</div>
+		</div>
+
+	<% end %>
+</div>

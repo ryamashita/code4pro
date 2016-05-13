@@ -1,0 +1,37 @@
+<div class="row">
+  <div class="col-md-6 col-md-offset-3 text-center"> 
+
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+            <%= render 'shared/devisemes' %>
+
+      <div class="form-group">
+        <%= f.text_field :fullname, :class => 'form-control', :placeholder => 'ニックネーム(公開)', autofocus: true %>
+      </div>
+
+      <div class="form-group">
+        <%= f.email_field :email, :class => 'form-control', :placeholder => 'メールアドレス' %>
+      </div>
+
+      <div class="form-group">
+        <% if @validatable %>
+          <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %>
+        <%= f.password_field :password, :class => 'form-control', :placeholder => 'パスワード', autocomplete: "off" %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "メールアドレスで会員登録", :class => "btn btn-warning" %>
+      </div>
+    <% end %>
+
+    <hr>
+
+    <%= link_to "Facebookで会員登録", user_omniauth_authorize_path(:facebook), class: "btn btn-primary" %> 
+
+    <hr>
+
+    <%= link_to "Twitterで会員登録", user_omniauth_authorize_path(:twitter), class: "btn btn-info" %>
+
+
+  </div>  
+</div>

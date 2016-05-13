@@ -1,0 +1,398 @@
+<div class="panel panel-default">
+	<div class="panel-body">
+		
+		<!-- Image & Information-->
+		<div class="row">
+			<div class="col-md-7">
+				<%= image_tag @photos[0].image.url(), class: "img-responsive" if @photos.length > 0 %>
+				<table class="table">
+					<thead>	
+						<tr><th colspan="2">
+						<%= link_to user_path(@room.user.id) do %>
+						<%= image_tag avatar_url(@room.user), class: "img-circle avatar-small" %>&nbsp;<span class="textcolor"><%= @room.user.fullname %></span>
+						<% end %>
+						</th></tr>
+					</thead>
+					<tbody>
+						<tr><td>自己紹介</td><td><%= @room.user.description %></td></tr>
+					</tbody>
+				</table>				
+			</div>
+
+			<div class="col-md-5">
+				<table class="table table-striped">
+					<thead>
+						<tr class="warning"><th>項目</th><th>詳細情報</th></tr>
+					</thead>
+					<tbody>
+						<tr><td>住所</td><td><%= @room.address %></td></tr>
+						<tr><td>家賃（円）</td><td><%= @room.monthlyprice %></td></tr>
+						<tr><td>敷金</td><td><%= @room.depositmoney %></td></tr>
+						<tr><td>礼金</td><td><%= @room.keymoney %></td></tr>
+						<tr><td>間取り</td><td><%= @room.floor %></td></tr>
+						<tr><td>面積（㎡）</td><td><%= @room.area %></td></tr>
+						<tr><td>建物種別</td><td>	<%= @room.home_type %></td></tr>
+						<tr><td>構造種別</td><td><%= @room.room_type %></td></tr>
+						<tr><td>階数/階建</td><td><%= @room.xthfloor %>&nbsp;/&nbsp;<%= @room.xths %></td></tr>
+						<tr><td>方角</td><td><%= @room.compass %></td></tr>
+						<tr><td>築年月日</td><td><%= @room.whenbuilt %></td></tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		<hr>
+
+		<!-- About -->
+		<div class="row">
+			<div class="col-md-12">
+				<h2>ワンポイント</h2>
+			</div>
+		</div>
+
+		<!-- Amenities -->
+		<div class="row">
+			<div class="col-md-2 col-md-offset-1">
+				<p>付属設備(室内)</p>
+			</div>
+			<div class="col-md-9">
+				<div class="row">
+					<ul class="amenities">
+						<div class="col-md-4">
+							<li class="<%= 'text-line-through' if !@room.is_toilet %>">
+							<span class="step size-18"><i id="icons8-toilet" class="icons8-toilet <%= 'text-line-through' if !@room.is_toilet %>"></i></span>&nbsp;トイレ</li>
+						</div>
+						<div class="col-md-4">
+							<li class="<%= 'text-line-through' if !@room.is_bathroom %>">
+							<span class="step size-18"><i id="icons8-shower-and-tub" class="icons8-shower-and-tub <%= 'text-line-through' if !@room.is_bathroom %>"></i></span>&nbsp;浴室</li>
+						</div>
+						<div class="col-md-4">
+							<li class="<%= 'text-line-through' if !@room.is_separate %>">
+							<span class="step size-18"><i id="icons8-split-files" class="icons8-split-files <%= 'text-line-through' if !@room.is_separate %>"></i></span>&nbsp;トイレ/バス別</li>
+						</div>
+					</ul>
+				</div>
+				<div class="row">
+					<ul class="amenities">
+						<div class="col-md-4">
+							<li class="<%= 'text-line-through' if !@room.is_bidet %>">
+							<span class="step size-18"><i id="icons8-fountain" class="icons8-fountain <%= 'text-line-through' if !@room.is_bidet %>"></i></span>&nbsp;ウォシュレット</li>
+						</div>
+						<div class="col-md-4">
+							<li class="<%= 'text-line-through' if !@room.is_air %>">
+							<span class="step size-18"><i id="icons8-air-conditioner" class="icons8-air-conditioner <%= 'text-line-through' if !@room.is_air %>"></i></span>&nbsp;エアコン</li>
+						</div>
+						<div class="col-md-4">
+							<li class="<%= 'text-line-through' if !@room.is_kitchenih %>">
+							<span class="step size-18"><i id="icons8-heating-room" class="icons8-heating-room <%= 'text-line-through' if !@room.is_kitchenih %>"></i></span>&nbsp;キッチン(IH)</li>
+						</div>
+					</ul>			
+				</div>
+				<div class="row">
+					<ul class="amenities">
+						<div class="col-md-4">
+							<li class="<%= 'text-line-through' if !@room.is_kitchen %>">
+							<span class="step size-18"><i id="icons8-gas-industry" class="icons8-gas-industry <%= 'text-line-through' if !@room.is_kitchen %>"></i></span>&nbsp;キッチン(コンロ)</li>
+						</div>
+					</ul>			
+				</div>
+			</div>
+
+			<hr>
+			
+			<div class="col-md-2 col-md-offset-1">
+				<p>付属設備(室外)</p>
+			</div>
+			<div class="col-md-9">
+				<div class="row">
+					<ul class="amenities">
+						<div class="col-md-4">
+							<li class="<%= 'text-line-through' if !@room.is_balcony %>">
+							<span class="step size-18"><i id="icons8-balcony" class="icons8-balcony <%= 'text-line-through' if !@room.is_balcony %>"></i></span>&nbsp;ベランダ</li>
+						</div>
+						<div class="col-md-4">
+							<li class="<%= 'text-line-through' if !@room.is_bicycle_parking %>">
+							<span class="step size-18"><i id="icons8-bicycle" class="icons8-bicycle <%= 'text-line-through' if !@room.is_bicycle_parking %>"></i></span>&nbsp;駐輪場</li>
+						</div>
+						<div class="col-md-4">
+							<li class="<%= 'text-line-through' if !@room.is_parking %>">
+							<span class="step size-18"><i id="icons8-car" class="icons8-car <%= 'text-line-through' if !@room.is_parking %>"></i></span>&nbsp;駐車場</li>
+						</div>
+					</ul>
+				</div>
+				<div class="row">
+					<ul class="amenities">
+						<div class="col-md-4">
+							<li class="<%= 'text-line-through' if !@room.is_elevator %>">
+							<span class="step size-18"><i id="icons8-elevator" class="icons8-elevator <%= 'text-line-through' if !@room.is_elevator %>"></i></span>&nbsp;エレベーター</li>
+						</div>
+						<div class="col-md-4">
+							<li class="<%= 'text-line-through' if !@room.is_autolock %>">
+							<span class="step size-18"><i id="icons8-lock" class="icons8-lock <%= 'text-line-through' if !@room.is_autolock %>"></i></span>&nbsp;オートロック</li>
+						</div>
+					</ul>			
+				</div>
+			</div>
+
+			<hr>
+
+			<div class="col-md-2 col-md-offset-1">
+				<p>その他</p>
+			</div>
+			<div class="col-md-9">
+				<div class="row">
+					<ul class="amenities">
+						<div class="col-md-4">
+							<li class="<%= 'text-line-through' if !@room.is_quietout %>">
+							<span class="step size-18"><i id="icons8-no-audio" class="icons8-no-audio <%= 'text-line-through' if !@room.is_quietout %>"></i></span>&nbsp;閑静な環境</li>
+						</div>
+						<div class="col-md-8">
+							<li class="<%= 'text-line-through' if !@room.is_quietin %>">
+							<span class="step size-18"><i id="icons8-not-hearing" class="icons8-not-hearing <%= 'text-line-through' if !@room.is_quietin %>"></i></span>&nbsp;隣室/上階の音が気にならない</li>
+						</div>
+					</ul>
+				</div>
+				<div class="row">
+					<ul class="amenities">
+						<div class="col-md-4">
+							<li class="<%= 'text-line-through' if !@room.is_station %>">
+							<span class="step size-18"><i id="icons8-railway-station" class="icons8-railway-station <%= 'text-line-through' if !@room.is_station %>"></i></span>&nbsp;駅近い</li>
+						</div>
+						<div class="col-md-4">
+							<li class="<%= 'text-line-through' if !@room.is_convenience %>">
+							<span class="step size-18"><i id="icons8-shop" class="icons8-shop <%= 'text-line-through' if !@room.is_convenience %>"></i></span>&nbsp;コンビニ近い</li>
+						</div>
+						<div class="col-md-4">
+							<li class="<%= 'text-line-through' if !@room.is_supermarket %>">
+							<span class="step size-18"><i id="icons8-shopping-cart" class="icons8-shopping-cart <%= 'text-line-through' if !@room.is_supermarket %>"></i></span>&nbsp;スーパー近い</li>
+						</div>
+					</ul>			
+				</div>
+				<div class="row">
+					<ul class="amenities">
+						<div class="col-md-4">
+							<li class="<%= 'text-line-through' if !@room.is_hospital %>">
+							<span class="step size-18"><i id="icons8-hospital-3" class="icons8-hospital-3 <%= 'text-line-through' if !@room.is_hospital %>"></i></span>&nbsp;病院近い</li>
+						</div>
+						<div class="col-md-4">
+							<li class="<%= 'text-line-through' if !@room.is_gym %>">
+							<span class="step size-18"><i id="icons8-treadmill" class="icons8-treadmill <%= 'text-line-through' if !@room.is_gym %>"></i></span>&nbsp;ジム近い</li>
+						</div>
+					</ul>			
+				</div>
+				<div class="row">
+					<ul class="amenities">
+						<div class="col-md-4">
+							<li class="<%= 'text-line-through' if !@room.is_sunny %>">
+							<span class="step size-18"><i id="icons8-sun" class="icons8-sun <%= 'text-line-through' if !@room.is_sunny %>"></i></span>&nbsp;日当たり良好</li>
+						</div>
+						<div class="col-md-4">
+							<li class="<%= 'text-line-through' if !@room.is_nosmoking %>">
+							<span class="step size-18"><i id="icons8-no-smoking" class="icons8-no-smoking <%= 'text-line-through' if !@room.is_nosmoking %>"></i></span>&nbsp;禁煙</li>
+						</div>
+						<div class="col-md-4">
+							<li class="<%= 'text-line-through' if !@room.is_waterpressure %>">
+							<span class="step size-18"><i id="icons8-plumbing" class="icons8-plumbing <%= 'text-line-through' if !@room.is_waterpressure %>"></i></span>&nbsp;水圧強い</li>
+						</div>
+					</ul>			
+				</div>
+				<div class="row">
+					<ul class="amenities">
+						<div class="col-md-4">
+							<li class="<%= 'text-line-through' if !@room.is_pet %>">
+							<span class="step size-18"><i id="icons8-dog" class="icons8-dog <%= 'text-line-through' if !@room.is_pet %>"></i></span>&nbsp;イヌ・ネコOK!</li>
+						</div>
+						<div class="col-md-4">
+							<li class="<%= 'text-line-through' if !@room.is_instrument %>">
+							<span class="step size-18"><i id="icons8-guitar" class="icons8-guitar <%= 'text-line-through' if !@room.is_instrument %>"></i></span>&nbsp;楽器演奏OK!</li>
+						</div>
+						<div class="col-md-4">
+							<li class="<%= 'text-line-through' if !@room.is_kindness %>">
+							<span class="step size-18"><i id="icons8-happy" class="icons8-happy <%= 'text-line-through' if !@room.is_kindness %>"></i></span>&nbsp;
+							大家さん親切</li>
+						</div>
+					</ul>			
+				</div>
+			</div>
+		</div>
+
+		<hr>
+
+		<!-- Carousel-->
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+				<div id="myCarousel" class="carousel slide" data-ride="carousel">
+				  <!-- Indicators -->
+				  <% if @photos %>
+					 <ol class="carousel-indicators">
+					 	<% @photos.each do |photo| %>
+				    	  <li data-target="#myCarousel" data-slide-to="<%= photo.id %>"></li>
+						<% end %>
+				  	 </ol>
+				  <% end %>
+				  <!-- Wrapper for slides -->
+				  <div class="carousel-inner" role="listbox">
+					<% if @photos %>
+						<% @photos.each do |photo| %>
+						    <div class="item <%= 'active' if photo.id == @photos[0].id %>">
+								<%= image_tag photo.image.url() %>
+						    </div>
+						<% end %>
+				    <% end %>
+				  </div>
+
+				  <!-- Left and right controls -->
+				  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+				    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+				    <span class="sr-only">前へ</span>
+				  </a>
+				  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+				    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+				    <span class="sr-only">次へ</span>
+				  </a>
+				</div>				
+			</div>
+		</div>
+
+		<hr>
+
+		<!-- Google Map -->
+		<div class="row">
+			<div class="col-md-6">
+				<div id="map"></div>
+			</div>
+
+			<div class="col-md-6">
+				<div id="street-view"></div>
+			</div>
+		</div>
+
+
+		<!-- Reviews -->
+		<div class="row">
+			<div class="col-md-12">
+				<h3>Reviews <span id="average_rating"></span> (<%= @reviews.count %>)</h3>
+				<div class="container">
+					<div>
+						<%= render 'reviews/form' if @booked && !@hasReview %>
+					</div>
+					<div>
+						<%= render 'reviews/list' %>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- Close by Rooms -->
+		<h3>この物件近くの他の物件</h3>
+		<div class="row">
+			<% for room in @room.nearbys(10) %>
+
+				<div class="col-md-4">
+					<div class="panel panel-default">
+						<div class="panel-heading preview">
+							<%= image_tag room.photos[0].image.url(:medium) if room.photos.length > 0 %>
+						</div>
+						<div class="panel-body">
+							<%= link_to room.address, room %><br>
+							(<%= (room.distance/1.6).round(2) %> キロ先)
+						</div>
+					</div>
+				</div>
+			<% end %>
+		</div>
+	</div>	
+</div>
+
+<script>
+$('#average_rating').raty({
+	path: '/assets',
+	readOnly: true,
+	score: <%= @room.average_rating %>
+});
+</script>
+
+<script>
+var timer = false;
+var areaWidth = $(window).width();
+var areaHeight = 0;
+var imageWidth = 1200;
+var imageHeight = 500;
+var targetWidth = imageWidth;
+var targetHeight = imageHeight;
+var targetXPosition = 0;
+var targetYPosition = 0;
+var imageRatio = imageWidth / imageHeight; 
+var targetRatio = areaWidth / areaHeight;
+var targetCssName = "";
+var targetCssValue = "";
+
+function setTargetImage(windowWidth){
+     if(windowWidth < 768){  
+           areaHeight = 160;
+     }else if(windowWidth < 992){
+           areaHeight = 240;
+     }else if(windowWidth < 1200){
+           areaHeight = 360;
+     }else {
+           areaHeight = 420;
+     }
+    targetRatio = areaWidth / areaHeight;
+    if(targetRatio < imageRatio){
+        // 高さにあわす
+        targetHeight = areaHeight;
+        targetWidth = targetHeight * imageRatio;
+        targetCssName = 'margin-left';
+        targetCssValue = (areaWidth - targetWidth) / 2;
+    }else{
+        // 幅にあわす
+        targetWidth = areaWidth;
+        targetHeight = targetWidth / imageRatio;
+        targetCssName = 'margin-top';
+        targetCssValue = (areaHeight - targetHeight) / 2;
+    }
+    
+    $(".item-mask").find("img").each(function(){
+        $(this).width(targetWidth ).height(targetHeight).css(targetCssName,targetCssValue+'px');
+    });
+}
+
+$(function() {
+    setTargetImage(areaWidth);
+});
+
+$(window).resize(function() {
+    if (timer !== false) {
+        clearTimeout(timer);
+    }
+    timer = setTimeout(function() {   
+       areaWidth = $(window).width();
+       setTargetImage(areaWidth);
+    }, 1000);
+});
+</script>
+
+<script>
+	  var map;
+	  var marker;
+	  var panorama;
+	  var infoWindow;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: new google.maps.LatLng(<%= @room.latitude %>, <%= @room.longitude %>),
+          zoom: 15
+        });
+        marker = new google.maps.Marker({
+          position: new google.maps.LatLng(<%= @room.latitude %>, <%= @room.longitude %>),
+          title: "HomeRoom!!",
+        });
+        marker.setMap(map);
+    	panorama = new google.maps.StreetViewPanorama(document.getElementById('street-view'), {
+          position: {lat: <%= @room.latitude %>, lng:<%= @room.longitude %>},
+          pov: {heading: 165, pitch: 0},
+          zoom: 1
+        });
+        map.setStreetView(panorama);
+      }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5Ly3NabVoZoDNZ6V-_YhS6duBC2rxNrg&callback=initMap"></script>

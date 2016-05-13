@@ -1,0 +1,883 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "toastr";
+
+/*
+ *= require evil-icons
+ */
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+	position: relative;
+	min-height: 100%;
+}
+
+* {
+  /* padding+border=width/heifghtで型崩れを防ぐ */ 
+	box-sizing: border-box;
+}
+
+body {
+  /* Margin bottom by footer height */ 
+	margin-bottom: 60px;
+	font-family: Arial, Verdana, sans-serif;
+	font-size: 15px;
+	padding-top: 100px;
+	color: #565a5c;
+	background-color: #F8F8F8;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #ff8c00;
+  z-index: 9;
+}
+/* Sticky footer styles
+-------------------------------------------------- */
+
+
+/* フォントサイズに関する指定
+-------------------------------------------------- */
+h1 {
+	font-size:2.5em;
+}
+
+h2 {
+	font-size:1.5em;
+}
+
+p {
+	font-size: 1em;
+}
+/* フォントサイズに関する指定
+-------------------------------------------------- */
+
+
+/* リンク先（aタグ）に関する文字色：白色と下線：無しの指定
+-------------------------------------------------- */
+a:link { 
+	color: #FFFFFF !important; 
+	text-decoration : none ;
+}
+
+a:visited {
+	color: #FFFFFF !important; 
+	text-decoration : none ;
+}
+
+a:active {
+	color: #FFFFFF !important;
+	text-decoration : none ;
+}
+
+a:hover { 
+	color: #FFFFFF !important;
+	text-decoration : none ;
+	cursor: pointer;
+}
+/* リンク先（aタグ）に関する文字色：白色と下線：無しの指定
+-------------------------------------------------- */
+
+
+/* 本文全体の幅は80%で指定(最大画面幅1,170px)
+-------------------------------------------------- */
+.container {
+	max-width: 1170px;
+	width: 80%;
+}
+/* 本文全体の幅は80%で指定(最大画面幅1,170px)
+-------------------------------------------------- */
+
+/* navbarの全体指定
+-------------------------------------------------- */
+.navbar-default {
+	background-color: #ff8c00;
+}
+/* navbarの全体指定
+-------------------------------------------------- */
+
+/* navbarタイトル「HomeRoom」の位置、色指定等
+-------------------------------------------------- */
+.navbar-default .navbar-brand {
+	color: #FFFFFF;
+	font-size: 2em;
+	font-weight: 400;
+	font-family: Impact;
+	line-height: 30px;
+}
+/* navbarタイトル「HomeRoom」の位置、色指定等
+-------------------------------------------------- */
+
+/* Bootstrapによるicon-bar色指定（三本線）
+-------------------------------------------------- */
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #FFFFFF;
+}
+/* Bootstrapによるicon-bar色指定（三本線）
+-------------------------------------------------- */
+
+/* TOPページ、「聞いてみよう」「物件を載せよう」、「ログイン」、「会員登録」の位置指定等
+-------------------------------------------------- */
+.navbar-top {
+	color: #FFFFFF;
+	font-size: 1em;
+	line-height: 30px;
+}
+/* TOPページ、「聞いてみよう」「物件を載せよう」、「ログイン」、「会員登録」の位置指定等
+-------------------------------------------------- */
+
+/* TOPページ、ログイン後のアカウントドロップダウンの色指定等
+-------------------------------------------------- */
+.dropdown {
+	color: #FFFFFF;
+	background-color: #ff8c00;
+	margin: 1px auto;
+}
+
+.dropdwon:hover {
+	color: #FFFFFF;
+	background-color: #ff8c00; 
+}
+
+.dropdown-toggle {
+	color: #FFFFFF;
+	background-color: #ff8c00; 
+}
+
+.dropdown-menu {
+	color: #FFFFFF;
+	background-color: #ff8c00; 
+}
+/* TOPページ、ログイン後のアカウントドロップダウンの色指定等
+-------------------------------------------------- */
+
+/* TOPページ、ログイン後のアカウントドロップダウンのホバー時の色指定等
+-------------------------------------------------- */
+.navbar-right > li {
+	display: inline-block;
+	color: #FFFFFF;	
+	background: #ff8c00;
+}
+
+.navbar-right > li:hover {
+	color: #FFFFFF;
+	background: rgba(255, 102, 0, 0.6);
+}
+/* TOPページ、ログイン後のアカウントドロップダウンのホバー時の色指定等
+-------------------------------------------------- */
+
+/* TOPページ、ログイン後のアカウントドロップダウンのホバー時の色指定等
+-------------------------------------------------- */
+.navbar-right > li:hover > a {
+	color: #FFFF00;
+	background: #ff8c00;
+}
+
+.navbar-right > li:hover li:hover > a {
+	color: #FFFF00;
+	background: #ff6600;
+}
+/* TOPページ、ログイン後のアカウントドロップダウンのホバー時の色指定等
+-------------------------------------------------- */
+
+/* footer部分のCSS
+-------------------------------------------------- */
+.text-muted {
+	color: #FFFFFF;
+	text-align: center;
+	line-height: 60px;
+	margin-bottom: 0;
+}
+/* footer部分のCSS
+-------------------------------------------------- */
+
+/* メールアドレスでの認証ボタンのCSS(LESSで指定すべきか)
+-------------------------------------------------- */
+.btn-warning.btn {
+	border: 1px solid #ff8c00; 
+	border-radius: 2px;
+	font-weight: bold;
+	background-color: #ff8c00; 
+	color: #fff;
+	padding: 10px 25px 10px 25px;
+	box-shadow:2px 2px #888888;
+}
+
+.btn-warning.btn:hover, .btn-warning.btn:focus {
+	border-color: #ff6600;
+	border-bottom-color: #ff6600;
+	background-color: #ff6600;
+	outline: none;
+}
+
+.btn-warning.btn:active {
+	border-color: #ff6600;
+	background-color: #ff6600;
+	outline: none;
+	position: relative;
+	top:2px;
+	left:2px;
+	box-shadow: none;
+}
+/* メールアドレスでの認証ボタンのCSS(LESSで指定すべきか)
+-------------------------------------------------- */
+
+/* Facebookでの認証ボタンのCSS(LESSで指定すべきか)
+-------------------------------------------------- */
+.btn-primary.btn {
+	border: 1px solid #3B5998; 
+	border-radius: 2px;
+	font-weight: bold;
+	background-color: #3B5998; 
+	color: #fff;
+	padding: 10px 40px 10px 40px;
+	box-shadow:2px 2px #888888;
+}
+
+.btn-primary.btn:hover, .btn-primary.btn:focus {
+	border-color: #3B5998; 
+	border-bottom-color: #3B5998; 
+	background-color: #3B5998; 
+	outline: none;
+}
+
+.btn-primary.btn:active {
+	border-color: #3B5998; 
+	background-color: #3B5998; 
+	outline: none;
+	position: relative;
+	top:2px;
+	left:2px;
+	box-shadow: none;
+}
+/* Facebookでの認証ボタンのCSS(LESSで指定すべきか)
+-------------------------------------------------- */
+
+/* Twitterでの認証ボタンのCSS(LESSで指定すべきか)
+-------------------------------------------------- */
+.btn-info.btn {
+	border: 1px solid #00FFFF; 
+	border-radius: 2px;
+	font-weight: bold;
+	background-color: #00FFFF; 
+	color: #fff;
+	padding: 10px 50px 10px 50px;
+	box-shadow:2px 2px #888888;
+	z-index: 1;
+}
+
+.btn-info.btn:hover, .btn-info.btn:focus {
+	border-color: #00FFFF; 
+	border-bottom-color: #00FFFF; 
+	background-color: #00FFFF; 
+	outline: none;
+}
+
+.btn-info.btn:active {
+	border-color: #00FFFF; 
+	background-color: #00FFFF; 
+	outline: none;
+	position: relative;
+	top:2px;
+	left:2px;
+	box-shadow: none;
+}
+/* Twitterでの認証ボタンのCSS(LESSで指定すべきか)
+-------------------------------------------------- */
+
+.btn-link.btn {
+	margin:2px 4px 2px;
+	border: 1px solid #C0C0C0;
+	border-radius: 2px;
+	font-weight: bold;
+	background-color: #C0C0C0;
+	color: #fff;
+	padding: 8px auto;
+	box-shadow:2px 2px #888888;
+}
+
+.btn-link.btn:hover, .btn-primary.btn:focus {
+	border-color: #C0C0C0;
+	border-bottom-color: #C0C0C0;
+	background-color: #C0C0C0;
+	outline: none;
+}
+
+.btn-link.btn:active {
+	border-color: #C0C0C0;
+	background-color: #C0C0C0;
+	outline: none;
+	position: relative;
+	top:2px;
+	left:2px;
+	box-shadow: none;
+}
+
+.btn-default.btn {
+	width: 100%;
+	border-radius: 2px;
+	padding: 10px 0;
+	margin-top: 10px;
+	color: #565a5c !important;
+}
+
+.top-wrapper {
+	background-image: url('/assets/allrooms.png');
+	background-size: cover;
+	background-position: center;
+	height:500px;
+	margin-top: 40px;
+	position: relative;
+}
+
+.top-wrapper h1 {
+	text-align: center;
+	color: #FFFFFF;
+	position: relative;
+	top: 220px;
+}
+
+.text-center {
+	margin-top: 20px;
+	padding-top: 15px;
+}
+
+.panel-default .panel-heading {
+	color: #565a5c;
+	background-color: #edefed;
+	font-size: 18px;
+	font-weight: 400;
+	line-height: 18px;
+}
+
+.panel-body {
+	padding-top: 20px;
+}
+
+.row-space-1 {
+	margin-top: 6px;
+	margin-bottom: 6px;
+}
+
+.row-space-2 {
+	margin-top: 12px;
+	margin-bottom: 12px;
+}
+
+.row-space-3 {
+	margin-top: 24px;
+	margin-bottom: 24px;
+}
+
+.description {
+	color: #575757;
+	font-size: 15px;
+	font-weight: 500;
+	line-height: 25px;
+}
+
+/* アバター(ここではGravatar)の指定
+-------------------------------------------------- */
+.avatar-small {
+	width: 28px;
+}
+
+.avatar-medium {
+	width: 48px;
+}
+
+.avatar-large {
+	width: 68px;
+}
+
+.avatar-full {
+	width: 100%;
+}
+/* アバター(ここではGravatar)の指定
+-------------------------------------------------- */
+
+/* formに関する全般的なCSS指定
+-------------------------------------------------- */
+.form-group {
+	margin-bottom: 25px;
+}
+
+.form-control {
+	border-radius: 2px;
+	height: 4rem;
+}
+/* formに関する全般的なCSS指定
+-------------------------------------------------- */
+
+/* sidebarに関する全般的なCSS指定
+-------------------------------------------------- */
+.sidebar-list {
+	margin-top:45px;
+	padding-left: 10px;
+	list-style: none;
+	border-bottom: 1px solid #ccc;
+}
+
+.sidebar-item {
+	padding: 3px 0;
+	font-size: 16px;
+	color: #82888a;
+	font-size: 15px;
+}
+
+.sidebar-link {
+	color: #82888a;
+	text-decoration: none;
+}
+
+.sidebar-link:hover, .sidebar-link:focus {
+	color: #cacccd;
+	text-decoration: none;
+}
+
+.active.sidebar-link {
+	color: #565a5c !important;
+	text-decoration: none;
+}
+/* sidebarに関する全般的なCSS指定
+-------------------------------------------------- */
+
+/* 物件掲載ページに関する全般的なCSS指定
+-------------------------------------------------- */
+label {
+	color: #565a5c;
+	font-size: 1.1em;
+	font-weight: 500;
+	margin-top: 5px;
+	margin-bottom: 2px;
+}
+
+select {
+	color: #565a5c;
+	background-color: #fff;
+	width: 100%;
+	border: 1px solid #ccc;
+	border-radius: 2px;
+	padding: 10px;
+	appearance: none;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+}
+
+.select:before {
+	content: '\25bc';
+	font-size: 1.2em;
+	position: absolute;
+	color: #82888A;
+	top: 40px;
+	right: 20px;
+	transform: scale(0.84, 0.42);
+}
+
+.selecty:before {
+	content: '\25bc';
+	font-size: 1.2em;
+	position: absolute;
+	color: #82888A;
+	top: 10px;
+	right: 20px;
+	transform: scale(0.84, 0.42);
+}
+
+input[type="checkbox"] {
+	height: 1.25em;
+	width: 1.25em;
+	margin-bottom: -0.25em;
+	margin-right: 5px;
+	vertical-align: top;
+	border: 1px solid #c4c4c4;
+	border-radius: 2px;
+	appearance: none;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+}
+
+input[type="checkbox"]:checked:before {
+	content: "\2713";
+	position: absolute;
+	font-size: 0.95em;
+	text-align: center;
+	width: 1.25em;
+	color: #ff8c00;
+}
+
+.btn-file {
+	position: relative;
+	overflow: hidden;
+	background: #edefed;
+}
+
+.btn-file input[type=file] {
+	position: absolute;
+	top: 0;
+	right: 0;
+	min-width: 100%;
+	min-height: 100%;
+	font-size: 100px;
+	text-align: right;
+	filter: alpha(opacity=0);
+	opacity: 0;
+	outline: none;
+	background: #edefed;
+	cursor: inherit;
+	display: block;
+}
+
+.fa.fa-times {
+	color: #555;
+	margin: 7px auto;
+}
+
+.fa.fa-times:hover {
+	cursor: pointer;
+}
+
+.actions {
+	margin-bottom: 20px;
+}
+/* 物件掲載ページに関する全般的なCSS指定
+-------------------------------------------------- */
+
+
+.panel-heading.preview {
+	padding: 0;
+}
+
+.panel-heading.preview img {
+	width: 100%;
+	height:200px;
+	background-size: cover;
+}
+
+
+/* 物件登録ページに関する全般的なCSS指定
+-------------------------------------------------- */
+.textcolor {
+	color: #564539;
+}
+
+.amenities li {
+	margin-bottom: 10px;
+	list-style-type: none;
+}
+
+.text-line-through {
+	text-decoration: line-through;
+	color:rgba(255,140,0,0.5);	
+}
+
+.panel-default .panel-body {
+	color: #564539 !important;
+}
+/* 物件登録ページに関する全般的なCSS指定
+-------------------------------------------------- */
+
+.reservation-table td {
+	width: 100%;
+	border: 1px solid #dce0e0;
+	padding: 10px;
+}
+
+.wide {
+	width:100%;
+}
+
+.price_tag {
+	background-color: #606567;
+	color: #fff;
+	font-size: 20px;
+	padding:10px;
+	margin-bottom:10px;
+}
+
+.conversation {
+	color: #7f7f7f;
+	padding: 10px;
+}
+
+.conversation:hover, .conversation:focus {
+	background-color: #f4f4f5;
+}
+
+/* 検索ページに関する全般的なCSS指定
+-------------------------------------------------- */
+#wrapper {
+	width:960px;
+	margin:0 auto;
+}
+
+#sidebar {
+	float: right;
+	width: 340px;
+}	
+
+#sidebar #widget {
+	width: 340px;
+	height: 600px;
+	margin-bottom: 10px;
+	border-bottom: 1px solid #ccc;
+}
+
+#article {
+	width: 560px;
+}
+/* 検索ページに関する全般的なCSS指定
+-------------------------------------------------- */
+
+.discovery-card {
+	background-size: cover;
+	background-position: center;
+	height:326px;
+    background-color: #000;
+    opacity: 1.0;
+    margin-bottom: 15px;
+    transition:all 0.3s;
+}
+
+.discovery-card:hover {
+    opacity: 0.8;
+}
+
+
+.va-container {
+	display: table;
+	width: 100%;
+	height: 100%;
+}
+
+.va-middle {
+	color: #fff;
+	vertical-align: middle;
+	display: table-cell;
+}
+
+/*GoogleMap & GoogleStreetView の設定 
+-------------------------------------------------- */
+#map {
+width: 100%;
+height: 400px;
+}
+
+#street-view {
+width: 100%;
+height: 400px;
+}
+
+#infoWindow {
+	color: #ff8c00;
+	height: 3px;
+	padding:0;
+}
+/*GoogleMap & GoogleStreetView の設定 
+-------------------------------------------------- */
+
+/*カルーセル追加 
+-------------------------------------------------- */
+.carousel {
+  margin: 10px 0;
+}
+
+.carousel-caption {
+  z-index: 10;
+}
+
+.carousel .item {
+  background-color: #777;
+}
+
+.carousel,
+.carousel .item,
+.carousel .item-mask,
+.carousel-inner > .item > img {
+	height:500px;
+}
+
+.carousel .item-mask {
+	width:100%;
+	overflow:hidden;
+}
+
+.carousel-inner > .item > .item-mask > img {
+ 	position: absolute;
+}
+/*カルーセル追加 
+-------------------------------------------------- */
+
+
+/*アコーディオン追加 
+-------------------------------------------------- */
+#faq-list {
+  padding: 0;
+  list-style: none;
+}
+
+.faq-list-item {
+  margin:10px;
+  border-bottom:1px solid #ccc;
+  position:relative;
+  cursor:pointer;
+  text-align: left;
+}
+
+.faq-list-item h3 {
+  font-size: 14px;
+}
+
+.faq-list-item span {
+  position:absolute;
+  top:-3px;
+  right:5px;
+  color: #B3B3B3;
+  font-size:16px;
+}
+
+.answer {
+  font-size: 12px;
+  display: none;
+  padding: 5px 0px;
+  margin-bottom: 15px;
+}
+/*アコーディオン追加 
+-------------------------------------------------- */
+
+/*icon8 
+-------------------------------------------------- */
+@font-face {
+  font-family: "Icons8";
+  src: url("assets/downloadedicon/Icons8_909a6787552e927ad6d2b170fc672994.eot");
+  src: url("assets/downloadedicon/Icons8_909a6787552e927ad6d2b170fc672994.eot?#iefix") format("embedded-opentype"),
+       url(data:application/x-font-woff;charset=utf-8;base64,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),
+       url("assets/downloadedicon/Icons8_909a6787552e927ad6d2b170fc672994.woff") format("woff"),
+       url("assets/downloadedicon/Icons8_909a6787552e927ad6d2b170fc672994.ttf") format("truetype"),
+       url("assets/downloadedicon/Icons8_909a6787552e927ad6d2b170fc672994.svg#Icons8") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "Icons8";
+    src: url("assets/downloadedicon/Icons8_909a6787552e927ad6d2b170fc672994.svg#Icons8") format("svg");
+  }
+}
+
+[data-icon]:before { content: attr(data-icon); }
+
+[data-icon]:before,
+.icons8-air-conditioner:before,
+.icons8-balcony:before,
+.icons8-bicycle:before,
+.icons8-car:before,
+.icons8-dog:before,
+.icons8-elevator:before,
+.icons8-fountain:before,
+.icons8-gas-industry:before,
+.icons8-guitar:before,
+.icons8-happy:before,
+.icons8-heating-room:before,
+.icons8-hospital-3:before,
+.icons8-lock:before,
+.icons8-no-audio:before,
+.icons8-no-smoking:before,
+.icons8-not-hearing:before,
+.icons8-plumbing:before,
+.icons8-railway-station:before,
+.icons8-shop:before,
+.icons8-shopping-cart:before,
+.icons8-shower-and-tub:before,
+.icons8-split-files:before,
+.icons8-sun:before,
+.icons8-toilet:before,
+.icons8-treadmill:before {
+  display: inline-block;
+  font-family: "Icons8";
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  line-height: 1;
+  text-decoration: inherit;
+  text-rendering: optimizeLegibility;
+  text-transform: none;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+      }
+
+.icons8-air-conditioner:before { content: "\f100"; }
+.icons8-balcony:before { content: "\f101"; }
+.icons8-bicycle:before { content: "\f102"; }
+.icons8-car:before { content: "\f103"; }
+.icons8-dog:before { content: "\f104"; }
+.icons8-elevator:before { content: "\f105"; }
+.icons8-fountain:before { content: "\f106"; }
+.icons8-gas-industry:before { content: "\f107"; }
+.icons8-guitar:before { content: "\f108"; }
+.icons8-happy:before { content: "\f109"; }
+.icons8-heating-room:before { content: "\f10a"; }
+.icons8-hospital-3:before { content: "\f10b"; }
+.icons8-lock:before { content: "\f10c"; }
+.icons8-no-audio:before { content: "\f10d"; }
+.icons8-no-smoking:before { content: "\f10e"; }
+.icons8-not-hearing:before { content: "\f10f"; }
+.icons8-plumbing:before { content: "\f110"; }
+.icons8-railway-station:before { content: "\f111"; }
+.icons8-shop:before { content: "\f112"; }
+.icons8-shopping-cart:before { content: "\f113"; }
+.icons8-shower-and-tub:before { content: "\f114"; }
+.icons8-split-files:before { content: "\f115"; }
+.icons8-sun:before { content: "\f116"; }
+.icons8-toilet:before { content: "\f117"; }
+.icons8-treadmill:before { content: "\f118"; }
+.size-18 {
+  font-size: 18px;
+}
+/*icon8 
+-------------------------------------------------- */
+
+
+
+
+@media (min-width: 768px) {
+    .carousel,
+	.carousel .item,
+	.carousel .item-mask,
+	.carousel-inner > .item > .item-mask > img {
+		height:240px;
+	}
+}
+
+@media (min-width: 992px) {
+	.carousel,
+	.carousel .item,
+	.carousel .item-mask,
+	.carousel-inner > .item > .item-mask > img {
+		height:360px;
+	}
+}
+
+@media (min-width: 1200px) {
+	.carousel,
+	.carousel .item,
+	.carousel .item-mask,
+	.carousel-inner > .item > .item-mask > img {
+		height:420px;
+	}
+}
+
+
+
+
+
+
+
+

@@ -1,0 +1,174 @@
+<div id="wrapper" class="row">
+	<div id="sidebar">
+		<div id="widget" class="sticky">
+
+			<script>
+		      function initMap() {
+		        var mapDiv = document.getElementById('widget');
+		        var map = new google.maps.Map(mapDiv, {
+		          <% if @arrRooms.length > 0 %>
+		          center: {lat: <%= @arrRooms[0].latitude %>, lng: <%= @arrRooms[0].longitude %>},
+		          <% else %>
+		          center: {lat: 44.5403, lng: -78.5463},
+		          <% end %>
+		          zoom: 14
+		        });
+
+		        <% @arrRooms.each do |room| %>
+			        var marker = new google.maps.Marker({
+			          position: {lat: <%= room.latitude %>, lng: <%= room.longitude %>},
+			          title: "Home",
+			        });
+			        marker.setMap(map);
+			        marker.setVisible(false);
+			        var infoWindow = new google.maps.InfoWindow({
+			          content: '<p id="infoWindow"><%= room.monthlyprice %></p>',
+			          position: {lat: <%= room.latitude %>, lng:<%= room.longitude %>}
+			        });
+			        infoWindow.open(map, marker);
+		        <% end %>
+		      }
+		    </script>
+		    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5Ly3NabVoZoDNZ6V-_YhS6duBC2rxNrg&callback=initMap"></script>
+			
+		</div>
+	</div>
+
+	<div id="article">
+	
+		<div class="row">
+
+			<div class="col-md-12">
+				
+				<%= search_form_for @search, url: search_path do |f| %>
+
+					<div class="row">
+					    <div class="form-group">
+                		  	<label class="col-md-4 text-center-sm text-center-md" style="line-height: 30px;">キーワード</label>
+						    <div class="col-md-8">
+							  	<%= text_field_tag :search, params[:search], placeholder: "住所・駅名で検索", class: "form-control" %>
+					        </div>
+					    </div>
+					</div>
+
+					<hr>
+
+					<div class="row">
+				    	<div class="form-group">
+                		  	<label class="col-md-4 text-center-sm text-center-md" style="line-height: 30px;">家賃</label>
+							<div id="slider"></div>
+							    <script src="/assets/javascripts/jQRangeSlider-min.js"></script>
+							    <script>
+								//<!--
+								  $("#slider").rangeSlider();
+								//-->
+								</script>
+          		        </div>
+		            </div>
+
+					<hr>
+
+					<div class="row">
+						<div class="form-group">
+							<label class="col-md-4 text-center-sm text-center-md" style="line-height: 30px;">間取り</label>
+							<div class="col-md-4 selecty">
+							<%= f.select :floor, [["1R",0], ["1K",1], ["1DK",2], ["1LDK",3], ["2K",4], ["2DK",5], ["2LDK",6], ["3K",7], ["3DK",8], ["3LDK",9], ["4K/4DK",10], ["4LDK",11], ["5K以上",12]], prompt: "選択してください", class: "form-control" %>
+							</div>
+						</div>										
+					</div>
+				
+					<hr>
+
+					<ul id="faq-list">
+						<li class="faq-list-item">
+					    	<p class="question">その他の諸条件</p>
+					        <span>+</span>
+					        <div class="answer">
+					            <div class="row">
+									<div class="form-group">
+										<label class="col-md-2 text-center-sm text-center-md" style="line-height: 30px; padding-left: 40px;">間取り</label>
+										<div class="col-md-4 selecty">
+										<%= f.select :floor, [["1R",0], ["1K",1], ["1DK",2], ["1LDK",3], ["2K",4], ["2DK",5], ["2LDK",6], ["3K",7], ["3DK",8], ["3LDK",9], ["4K/4DK",10], ["4LDK",11], ["5K以上",12]], prompt: "選択してください", class: "form-control" %>
+										</div>
+										<label class="col-md-2 text-center-sm text-center-md" style="line-height: 30px; padding-left: 40px;">間取り</label>
+										<div class="col-md-4 selecty">
+										<%= f.select :floor, [["1R",0], ["1K",1], ["1DK",2], ["1LDK",3], ["2K",4], ["2DK",5], ["2LDK",6], ["3K",7], ["3DK",8], ["3LDK",9], ["4K/4DK",10], ["4LDK",11], ["5K以上",12]], prompt: "選択してください", class: "form-control" %>
+										</div>
+									</div>	
+								</div>							
+					    	</div>
+						</li>
+					</ul>
+
+					<div class="row text-right" style="margin: 20px 5px 40px;">
+						<%= f.submit "検索", class: "btn btn-warning" %>
+					</div>
+
+				<% end %>
+
+				<hr>
+
+				<div class="row">
+					<% @arrRooms.each do |room| %>
+						<div class="col-md-6">
+							<div class="panel panel-default">
+								<div class="panel-heading preview">
+									<%= image_tag room.photos[0].image.url(:medium) if room.photos.length > 0 %>
+								</div>
+								<div class="panel-body">
+									<%= link_to room.listing_name, room %>
+								</div>
+							</div>
+						</div>
+					<% end %>
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+</div>
+
+
+<script>
+	$(function(){ // document ready
+	  if (!!$('.sticky').offset()) { // make sure ".sticky" element exists
+	    var stickyTop = $('.sticky').offset().top; // returns number 
+	    $(window).scroll(function(){ // scroll event
+	      var windowTop = $(window).scrollTop(); // returns number 
+	      if (stickyTop < windowTop){
+	        $('.sticky').css({ position: 'fixed', top: 0 });
+	      }
+	      else {
+	        $('.sticky').css('position','static');
+	      }
+	    });
+	  }
+	});
+</script>
+<script>
+	$(function(){
+	  	$('.faq-list-item').click(function() {
+	    var $answer = $(this).children('.answer');
+	    if($answer.hasClass('open')) { 
+	      $answer.removeClass('open');
+	      // slideUpメソッドを用いて、$answerを隠してください
+	      $answer.slideUp();
+
+	      // 子要素のspanタグの中身をtextメソッドを用いて書き換えてください
+	      $(this).find('span').text('+');
+	      
+	    } else {
+	      $answer.addClass('open'); 
+	      // slideDownメソッドを用いて、$answerを表示してください
+	      $answer.slideDown();
+	      
+	      // 子要素のspanタグの中身をtextメソッドを用いて書き換えてください
+	      $(this).find('span').text('-');
+	    }
+  		});
+	});
+</script>
+

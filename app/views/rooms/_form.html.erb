@@ -1,0 +1,406 @@
+<% if @room.errors.any? %>
+<div class="alert alert-info">
+	<button class="close" data-dismiss="alert">&times;</button>
+	物件登録情報に抜け漏れがあります！<br>
+	賃貸契約書や重要事項説明書の内容をご確認のうえ、正確にご入力ください。
+</div>
+<% end %>
+
+<div class="panel panel-default">
+	<div class="panel-heading">
+		物件プロフィール情報を載せよう！
+	</div>
+	<div class="panel-body">
+
+		<%= form_for @room, :html => {multipart: true} do |f| %>
+
+			<div class="row">
+				<div class="col-md-3">
+					<label>① 物件詳細情報</label>
+				</div>
+			</div>
+
+			<div class="container" style="margin-top: 20px;">
+
+				<div class="row">
+					<div class="col-md-12">				
+						<div class="form-group">
+							<label class="control-label" for="address">住所（番地・号まで記入）</label>
+							<%= f.text_field :address, placeholder: "（例）千葉県柏市あけぼの４−７−８", class: "form-control" %>
+						</div>
+					</div>				
+				</div>
+
+				<div class="row">
+					<div class="col-md-12">				
+						<div class="form-group">
+							<label class="control-label" for="address_details">住所（アパート名/マンション名・号室を記入）&nbsp;<i class="fa fa-key fa-md" style="color:#ff8c00; line-height: 20px;" data-toggle="tooltip" title="非公開"></i></label>
+							<%= f.text_field :address_details, placeholder: "（例）コンブリオ柏２０７号", class: "form-control" %>
+						</div>
+					</div>				
+				</div>
+
+				<hr>
+
+				<div class="row">
+					<div class="col-md-3 select">
+						<div class="form-group">
+							<label class="control-label" for="home_type">建物種別</label>
+							<%= f.select :home_type, ["マンション", "アパート", "一戸建て", "その他（シェアハウス等）"], prompt: "選択してください", class: "form-control" %>
+						</div>						
+					</div>
+
+					<div class="col-md-3 select">
+						<div class="form-group">
+							<label class="control-label" for="room_type">構造種別</label>
+							<%= f.select :room_type, ["鉄骨/鉄筋", "木造", "その他"], prompt: "選択してください", class: "form-control" %>
+						</div>						
+					</div>
+					<div class="col-md-3">
+						<div class="form-group">
+							<label class="control-label" for="xthfloor">階数</label>
+							<div class="input-group">
+  								<%= f.number_field :xthfloor, placeholder: "（例）3", class: "form-control" %>
+  								<div class="input-group-addon">階部分</div>
+							</div>
+						</div>						
+					</div>
+					<div class="col-md-3">
+						<div class="form-group">
+							<label class="control-label" for="xths">階建</label>
+							<div class="input-group">
+  								<%= f.number_field :xths, placeholder: "（例）6", class: "form-control" %>
+								<div class="input-group-addon">階建て</div>
+							</div>
+						</div>						
+					</div>
+				</div>
+
+				<hr>
+
+				<div class="row">
+					<div class="col-md-4">
+						<div class="form-group">
+							<label class="control-label" for="monthlyprice">家賃（共益費込み）</label>
+							<div class="input-group">
+  								<%= f.number_field :monthlyprice, placeholder: "（例）50000", step:"100", class: "form-control" %>
+								<div class="input-group-addon">円/月</div>
+							</div>
+						</div>				
+					</div>
+					<div class="col-md-4 select">
+						<div class="form-group">
+							<label class="control-label" for="depositmoney">敷金</label>
+							<%= f.select :depositmoney, ["無し", "１カ月分", "２カ月分", "その他"], prompt: "選択してください", class: "form-control" %>
+						</div>						
+					</div>
+					<div class="col-md-4 select">
+						<div class="form-group">
+							<label class="control-label" for="keymoney">礼金</label>
+							<%= f.select :keymoney, ["無し", "１カ月分", "２カ月分", "その他"], prompt: "選択してください", class: "form-control" %>
+						</div>						
+					</div>
+
+				</div>
+
+				<hr>
+
+				<div class="row">
+					<div class="col-md-4 select">
+						<div class="form-group">
+							<label class="control-label" for="floor">間取り</label>
+							<%= f.select :floor, ["1R", "1K", "1DK", "1LDK", "2K", "2DK", "2LDK", "3K", "3DK", "3LDK", "4K/4DK", "4LDK", "5K以上"], prompt: "選択してください", class: "form-control" %>
+						</div>						
+					</div>
+					<div class="col-md-4">
+						<div class="form-group">
+							<label class="control-label" for="area">面積</label>
+							<div class="input-group">
+  								<%= f.number_field :area, placeholder: "（例）20.0", step:"0.1", class: "form-control" %>
+								<div class="input-group-addon">㎡</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4 select">
+						<div class="form-group">
+							<label class="control-label" for="compass">方角</label>
+							<%= f.select :compass, ["東", "西", "南", "北", "北東", "北西", "南東", "南西", "それ以外"], prompt: "選択してください", class: "form-control" %>
+						</div>						
+					</div>
+				</div>
+
+				<hr>
+
+	            <div class="row">
+	            	<div class="col-md-4 select">
+		              	<div class="form-group">
+		                	<label class="control-label" for="whenbuilt">築年月日</label> 
+		                	<%= f.select :whenbuilt, ["1989年以前", "1990年", "1991年", "1992年", "1993年", "1994年", "1995年", "1996年", "1997年", "1998年", "1999年", "2000年", "2000年", "2001年", "2002年", "2003年", "2004年", "2005年", "2006年", "2007年", "2008年", "2009年", "2010年", "2011年", "2012年", "2013年", "2014年", "2015年", "2016年"], prompt: "選択してください", class: "form-control" %>  
+		              	</div>
+	              	</div>
+	            </div>
+
+	            <hr>
+
+	            <div class="row">
+	            	<div class="col-md-8">
+		              <div class="form-group">
+		                <label class="control-label" for="lessor_name">貸主名前&nbsp;<i class="fa fa-key fa-md" style="color:#ff8c00; line-height: 20px;" data-toggle="tooltip" title="非公開"></i></label>
+ 
+		                  <%= f.text_field :lessor_name, placeholder: "（例）鈴木一朗", class: "form-control" %>
+		              </div>
+	              	</div>
+	            </div>
+
+	            <div class="row">
+	            	<div class="col-md-12">
+		              <div class="form-group">
+		                <label class="control-label" for="lessor_address">貸主住所&nbsp;<i class="fa fa-key fa-md" style="color:#ff8c00; line-height: 20px;" data-toggle="tooltip" title="非公開"></i></label>   
+		                  <%= f.text_field :lessor_address, placeholder: "（例）千葉県柏市あけぼの４−７−８　コンブリオ柏２０７号", class: "form-control" %>
+		              </div>
+	              	</div>
+	            </div>	           
+
+			</div>
+
+			<hr>
+
+			<div class="row">
+				<div class="col-md-3">
+					<label>② ワンポイント</label>
+				</div>
+			</div>
+
+			<div class="container" style="margin-top: 20px;">
+	
+				<div class="row">
+					<div class="col-md-3">
+						<label>付属設備(室内)</label>	
+					</div>				
+					<div class="col-md-3">
+						<div class="form-group" style="line-height: 25px;">
+							<%= f.check_box :is_toilet %> トイレ
+						</div>	
+					</div>
+					<div class="col-md-3">
+						<div class="form-group" style="line-height: 25px;">
+							<%= f.check_box :is_bathroom %> 浴室
+						</div>						
+					</div>
+					<div class="col-md-3">
+						<div class="form-group" style="line-height: 25px;">
+							<%= f.check_box :is_separate %> トイレ/バス別
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-3 col-md-offset-3">
+						<div class="form-group" style="line-height: 25px;">
+							<%= f.check_box :is_bidet %> ウォシュレット
+						</div>	
+					</div>
+					<div class="col-md-3">
+						<div class="form-group" style="line-height: 25px;">
+							<%= f.check_box :is_air %> エアコン
+						</div>						
+					</div>
+					<div class="col-md-3">
+						<div class="form-group" style="line-height: 25px;">
+							<%= f.check_box :is_kitchenih %> キッチン(IH)
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-3 col-md-offset-3">
+						<div class="form-group" style="line-height: 25px;">
+							<%= f.check_box :is_kitchen %> キッチン(コンロ)
+						</div>	
+					</div>
+				</div>
+
+				<hr>
+
+				<div class="row">
+					<div class="col-md-3">
+						<label>付属設備(室外)</label>	
+					</div>				
+					<div class="col-md-3">
+						<div class="form-group" style="line-height: 25px;">
+							<%= f.check_box :is_balcony %> ベランダ
+						</div>	
+					</div>
+					<div class="col-md-3">
+						<div class="form-group" style="line-height: 25px;">
+							<%= f.check_box :is_bicycle_parking %> 駐輪場
+						</div>						
+					</div>
+					<div class="col-md-3">
+						<div class="form-group" style="line-height: 25px;">
+							<%= f.check_box :is_parking %> 駐車場
+						</div>
+					</div>
+				</div>
+
+
+				<div class="row">
+					<div class="col-md-3 col-md-offset-3">
+						<div class="form-group" style="line-height: 25px;">
+							<%= f.check_box :is_elevator %> エレベーター
+						</div>	
+					</div>
+					<div class="col-md-3">
+						<div class="form-group" style="line-height: 25px;">
+							<%= f.check_box :is_autolock %> オートロック
+						</div>						
+					</div>
+				</div>	
+
+				<hr>
+
+				<div class="row">
+					<div class="col-md-3">
+						<label>その他</label>	
+					</div>				
+					<div class="col-md-3">
+						<div class="form-group" style="line-height: 25px;">
+							<%= f.check_box :is_quietout %> 閑静な環境
+						</div>	
+					</div>
+					<div class="col-md-6">
+						<div class="form-group" style="line-height: 25px;">
+							<%= f.check_box :is_quietin %> 隣室/上階の音が気にならない
+						</div>						
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-3 col-md-offset-3">
+						<div class="form-group" style="line-height: 25px;">
+							<%= f.check_box :is_station %> 駅近い
+						</div>	
+					</div>
+					<div class="col-md-3">
+						<div class="form-group" style="line-height: 25px;">
+							<%= f.check_box :is_convenience %> コンビニ近い
+						</div>						
+					</div>
+					<div class="col-md-3">
+						<div class="form-group" style="line-height: 25px;">
+							<%= f.check_box :is_supermarket %> スーパー近い
+						</div>						
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-3 col-md-offset-3">
+						<div class="form-group" style="line-height: 25px;">
+							<%= f.check_box :is_hospital %> 病院近い
+						</div>						
+					</div>
+					<div class="col-md-3">
+						<div class="form-group" style="line-height: 25px;">
+							<%= f.check_box :is_gym %> ジム近い
+						</div>						
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-3 col-md-offset-3">
+						<div class="form-group" style="line-height: 25px;">
+							<%= f.check_box :is_sunny %> 日当たり良好
+						</div>	
+					</div>
+					<div class="col-md-3">
+						<div class="form-group" style="line-height: 25px;">
+							<%= f.check_box :is_nosmoking %> 禁煙
+						</div>						
+					</div>
+					<div class="col-md-3">
+						<div class="form-group" style="line-height: 25px;">
+							<%= f.check_box :is_waterpressure %> 水圧強い
+						</div>						
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-3 col-md-offset-3">
+						<div class="form-group" style="line-height: 25px;">
+							<%= f.check_box :is_pet %> イヌ・ネコOK!
+						</div>	
+					</div>
+					<div class="col-md-3">
+						<div class="form-group" style="line-height: 25px;">
+							<%= f.check_box :is_instrument %> 楽器演奏OK!
+						</div>						
+					</div>
+					<div class="col-md-3">
+						<div class="form-group" style="line-height: 25px;">
+							<%= f.check_box :is_kindness %> 大家さん親切
+						</div>						
+					</div>
+				</div>
+			</div>
+
+			<hr>
+
+			<div class="row">
+				<div class="col-md-3">
+					<label>③ 写真</label>
+				</div>
+			</div>
+
+			<div class="container" style="margin-top: 20px;">
+
+				<div class="row">
+					<div class="col-md-4">
+						<div class="form-group">
+							<span class="btn btn-default btn-file">
+								<i class="fa fa-cloud-upload fa-lg"></i> 写真をアップロードする
+								<%= file_field_tag "images[]", type: :file, multiple: true %>	
+							</span>
+						</div>						
+					</div>
+				</div>		
+
+				<div id="photos"><%= render 'photos/list' %></div>
+
+			</div>
+
+			<hr>
+
+			<div class="container" style="margin-top: 20px;">
+
+				<div class="row">
+					<div class="form-group" style="line-height: 25px;">
+						<%= f.check_box :active %> 利用規約に同意の上、掲載する
+					</div>
+				</div>
+
+				<div class="actions">
+					<%= f.submit "保存", class: "btn btn-warning" %>
+				</div>
+
+			</div>
+
+		<% end %>
+
+	</div>
+</div>
+
+<script>
+  $(function() {
+    $("#move_at").datepicker({
+      dateFormat: 'yy-mm-dd',
+      minDate: 0,
+      maxDate: '3m'
+    });
+    $("#moved_at").datepicker({
+      dateFormat: 'yy-mm-dd',
+      minDate: 0,
+      maxDate: '3m'
+    });
+    $("[data-toggle=tooltip]").tooltip();
+  }); 
+</script>

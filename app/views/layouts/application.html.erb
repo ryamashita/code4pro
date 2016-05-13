@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:fb="http://ogp.me/ns/fb#">
+  <head>
+
+    <link rel="dns-prefetch" href="//maps.googleapis.com">
+    <link rel="dns-prefetch" href="//maps.gstatic.com">
+    <link rel="dns-prefetch" href="//mts0.googleapis.com">
+    <link rel="dns-prefetch" href="//mts1.googleapis.com">
+    <meta charset="utf-8">
+    <meta name="description" content="新しいお家探しのスタイルをHomeRoomで体験してください">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HomeRoom</title>
+    
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <%= evil_icons_sprite %>
+    <link rel="stylesheet" href="/assets/stylesheets/iThing.css" type="text/css" />
+
+    <script src="https://code.jquery.com/jquery-1.12.3.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <meta name="mobile-web-app-capable" content="yes">
+    <%= csrf_meta_tags %>
+
+
+
+  </head>
+
+  <body>
+
+      <%= render 'shared/navbar' %>
+
+  	  <%= render 'shared/message' %>
+
+      <div class="container">
+      	<%= yield %>
+      </div>
+
+      <div id="back-to-top" style="position:fixed;right:20px;bottom:5px"><a href="#"><i class="fa fa-caret-square-o-up fa-2x" style="color:#ff8c00;"></i></a></div>
+
+      <script>
+        $(function() {
+            $('#back-to-top').hide();
+            $(window).scroll(function() {
+                if ($(this).scrollTop() > 100) {
+                    $('#back-to-top').fadeIn();
+                } else {
+                    $('#back-to-top').fadeOut();
+                }
+            });
+            $('#back-to-top a').click(function() {
+                $('body, html').animate({
+                    scrollTop:0
+                }, 500);
+                return false;
+            });
+        });
+      </script>
+  </body>
+
+</html>

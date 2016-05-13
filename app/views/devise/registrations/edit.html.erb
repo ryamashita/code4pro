@@ -1,0 +1,204 @@
+<div class="row">
+  <div class="col-md-3">
+    <ul class="sidebar-list">
+      <li class="sidebar-item"><%= link_to "プロフィール情報の編集", edit_user_registration_path, class: "sidebar-link active" %></li>      
+    </ul>
+    <br>
+    <%= link_to "プロフィール情報の確認", user_path(current_user.id), class: "btn btn-default wide" %> 
+  </div>
+
+  <div class="col-md-9 text-center"> 
+   <div class="panel panel-default">
+     <div class="panel-heading">プロフィール情報</div>
+     <div class="panel-body">
+
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+            <%= render 'shared/devisemes' %>
+              
+            <div class="row">
+              <div class="form-group">
+                <label class="text-right col-md-3" style="line-height: 30px;">ニックネーム</label>
+                <div class="col-md-8 col-md-offset-1" >
+                  <%= f.text_field :fullname, autofocus: true, :placeholder => "（例）Homeroom", :class => 'form-control' %>
+                </div>
+              </div>
+            </div>
+
+            <hr>
+
+            <div class="row">
+              <div class="form-group">
+                <label class="text-right col-md-3" style="line-height: 30px;">自己紹介</label>
+                <div class="col-md-8 col-md-offset-1" >
+                  <%= f.text_area :description, rows: 5, cols: 25, :placeholder => "（例）閑静な住宅街で住みやすい環境なのでオススメです！", :class => 'form-control' %>
+                </div>
+              </div>
+            </div>
+
+            <hr>
+
+            <div class="row">
+              <div class="form-group">
+                <label class="text-right col-md-3" style="line-height: 30px;">メールアドレス</label>
+                <i class="col-md-1 fa fa-key fa-md" style="color:#ff8c00; line-height: 40px;" data-toggle="tooltip" title="非公開"></i>
+                <div class="col-md-8">
+                  <%= f.email_field :email, :class => 'form-control', :placeholder => "（例）Homeroom@homeroom.com" %>
+                </div>
+              </div>
+            </div>
+
+            <hr>
+
+            <div class="row">
+              <div class="form-group">
+                <label class="text-right col-md-3" style="line-height: 30px;">名前（漢字）</label>
+                <i class="col-md-1 fa fa-key fa-md" style="color:#ff8c00; line-height: 40px;" data-toggle="tooltip" title="非公開"></i>
+                <div class="col-md-4">
+                  <%= f.text_field :name_kanji_first, :class => 'form-control', :placeholder => "（例）山田" %>
+                </div>
+                <div class="col-md-4">
+                  <%= f.text_field :name_kanji_second, :class => 'form-control', :placeholder => "（例）太郎" %>
+                </div>
+              </div>
+            </div>
+
+            <hr>
+
+            <div class="row">
+              <div class="form-group">
+                <label class="text-right col-md-3" style="line-height: 30px;">名前（フリガナ）</label>
+                <i class="col-md-1 fa fa-key fa-md" style="color:#ff8c00; line-height: 40px;" data-toggle="tooltip" title="非公開"></i>
+                <div class="col-md-4">
+                  <%= f.text_field :name_kana_first, :class => 'form-control', :placeholder => "（例）ヤマダ" %>
+                </div>
+                <div class="col-md-4">
+                  <%= f.text_field :name_kana_second, :class => 'form-control', :placeholder => "（例）タロウ" %>
+                </div>
+              </div>
+            </div>
+
+            <hr>
+
+            <div class="row">
+              <div class="form-group">
+                <label class="text-right col-md-3" style="line-height: 30px;">性別</label>
+                <i class="col-md-1 fa fa-key fa-md" style="color:#ff8c00; line-height: 40px;" data-toggle="tooltip" title="非公開"></i>             
+                <div class="col-md-3" style="line-height: 35px;">
+                  <%= f.radio_button :sex, :class => 'form-control', :value =>  "0" %>&nbsp;男性
+                </div>
+                <div class="col-md-3" style="line-height: 35px;">
+                  <%= f.radio_button :sex, :class => 'form-control', :value =>  "1" %>&nbsp;女性
+                </div>
+              </div>
+            </div>
+
+            <hr>
+
+            <div class="row">
+              <div class="form-group">
+                <label class="text-right col-md-3" style="line-height: 30px;">引越予定日</label>
+                <div class="col-md-4 col-md-offset-1">
+                  <%= text_field_tag :move_at, params[:move_at], placeholder: "（例）2017年3月31日", class: "form-control" %>
+                </div>
+              </div>
+            </div>
+
+            <hr>
+
+            <p style="text-align: left;">※以下項目は引越後にご入力ください</p>
+
+            <hr>
+
+            <div class="row">
+              <div class="form-group">
+                <label class="text-right col-md-3" style="line-height: 30px;">引越実施日</label>
+                <div class="col-md-4 col-md-offset-1">
+                  <%= text_field_tag :moved_at, params[:moved_at], placeholder: "（例）2017年3月20日", class: "form-control" %>
+                </div>
+              </div>
+            </div>
+
+            <hr>
+
+            <div class="row">
+              <div class="form-group">
+                <label class="text-right col-md-3" style="line-height: 30px;">引越先郵便番号</label>
+                <i class="col-md-1 fa fa-key fa-md" style="color:#ff8c00; line-height: 40px;" data-toggle="tooltip" title="非公開"></i>   
+                  <div class="col-md-4">
+                    <%= f.text_field :move_to_postnumber, :class => 'form-control', :placeholder => "（例）271-0841" %>
+                  </div>
+              </div>
+            </div>
+
+            <hr>
+              
+            <div class="row">
+              <div class="form-group">
+                <label class="text-right col-md-3" style="line-height: 30px;">引越先住所</label>
+                <i class="col-md-1 fa fa-key fa-md" style="color:#ff8c00; line-height: 40px;" data-toggle="tooltip" title="非公開"></i>   
+                  <div class="col-md-8">              
+                    <%= f.text_field :move_to_address, :class => 'form-control', :placeholder => "（例）千葉県柏市あけぼの４−７−８ コンブリオ柏２０７号" %>
+                  </div>
+              </div>
+            </div>
+
+            <hr>
+
+            <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+              <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+            <% end %>
+
+            <p style="text-align: left;">※以下項目は変更時のみご入力ください</p>
+
+            <hr>
+
+            <div class="row">
+              <div class="form-group">
+                <label class="text-right col-md-3" style="line-height: 30px;">新しいパスワード</label>
+                <i class="col-md-1 fa fa-key fa-md" style="color:#ff8c00; line-height: 40px;" data-toggle="tooltip" title="非公開"></i>   
+                  <div class="col-md-8">              
+                    <%= f.password_field :password, autocomplete: "off", :placeholder => "（変更時のみ）", :class => 'form-control' %>
+                  </div>
+              </div>
+            </div>
+
+            <hr>
+
+            <div class="row">
+              <div class="form-group">
+                <label class="text-right col-md-3" style="line-height: 30px;">新しいパスワード</label>
+                <i class="col-md-1 fa fa-key fa-md" style="color:#ff8c00; line-height: 40px;" data-toggle="tooltip" title="非公開"></i>   
+                  <div class="col-md-8">                  
+                    <%= f.password_field :password_confirmation, autocomplete: "off", :placeholder => "（もう一度入力）", :class => 'form-control' %>
+                  </div>
+              </div>
+            </div>
+
+            <hr>
+
+            <div class="actions">
+              <%= f.submit "登録する", :class => "btn btn-warning" %>
+            </div>
+            <% end %>
+
+     </div>
+   </div>
+  </div>  
+</div>
+
+<script>
+  $(function() {
+    $("#move_at").datepicker({
+      dateFormat: 'yy-mm-dd',
+      minDate: 0,
+      maxDate: '3m'
+    });
+    $("#moved_at").datepicker({
+      dateFormat: 'yy-mm-dd',
+      minDate: 0,
+      maxDate: '3m'
+    });
+    $("[data-toggle=tooltip]").tooltip();
+  }); 
+
+</script>
