@@ -61,22 +61,22 @@ p {
 /* リンク先（aタグ）に関する文字色：白色と下線：無しの指定
 -------------------------------------------------- */
 a:link { 
-	color: #FFFFFF !important; 
+	color: #564539;
 	text-decoration : none ;
 }
 
 a:visited {
-	color: #FFFFFF !important; 
+	color: #564539;
 	text-decoration : none ;
 }
 
 a:active {
-	color: #FFFFFF !important;
+	color: #564539;
 	text-decoration : none ;
 }
 
 a:hover { 
-	color: #FFFFFF !important;
+	color: #564539;
 	text-decoration : none ;
 	cursor: pointer;
 }
@@ -152,6 +152,10 @@ a:hover {
 .dropdown-menu {
 	color: #FFFFFF;
 	background-color: #ff8c00; 
+}
+
+.textcolorwhite {
+	color: #FFFFFF;
 }
 /* TOPページ、ログイン後のアカウントドロップダウンの色指定等
 -------------------------------------------------- */
